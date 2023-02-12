@@ -2,7 +2,7 @@ FROM tomcat:latest
 
 LABEL maintainer="Aguerbaoui Nadia"
 
-COPY /home/ubuntu/webapp.war /usr/local/tomcat/webapps
+COPY webapp.war /usr/local/tomcat/webapps
 
 EXPOSE 8080
 
