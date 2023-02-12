@@ -26,10 +26,9 @@ pipeline {
 
                   //sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker images', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/Project061_Git_Gitlab_Jenkins_Docker/Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])  
               //  sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker images', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: ' /home/ubuntu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/Project061_Git_Gitlab_Jenkins_Docker/Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
+             sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
 
-docker stop tomcat-container; docker rm tomcat-container; docker rmi tomcat-image; docker build -t tomcat-image .; docker run -d --name tomcat-container -p 8080:8080 tomcat-image; ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: ' /home/ubuntu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/Project061_Git_Gitlab_Jenkins_Docker/Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-
+docker stop tomcat-container; docker rm tomcat-container;''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: ' /home/ubuntu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/Project061_Git_Gitlab_Jenkins_Docker/Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 
                 }
         }
