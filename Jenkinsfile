@@ -19,8 +19,16 @@ pipeline {
         
                 }
         }
-        
-        stage('Build image and run Docker container on remote host') {
+        stage('Send Dockerfile to the Docker server')
+        {
+
+                steps{
+                    
+                  sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker images', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/var/lib/jenkins/workspace/Project061_Git_Gitlab_Jenkins_Docker/Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])  
+
+                }
+        }
+       /* stage('Build image and run Docker container on remote host') {
                  steps {
          sshPublisher(publishers: [sshPublisherDesc(configName: 'ubuntu', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker stop tomcat-container; 
                 docker rm tomcat-container; 
@@ -29,7 +37,7 @@ pipeline {
                 docker run -d --name tomcat-container -p 8080:8080 tomcat-image; ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
               
                  }
-        }
+        }*/
        
  
 
